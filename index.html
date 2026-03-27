@@ -2,90 +2,7 @@
 <html>
 <head>
 <title>Cybersecurity Portfolio</title>
-
-<style>
-body {
-  margin: 0;
-  background: #0d1117;
-  color: #e6edf3;
-  font-family: monospace;
-}
-
-/* Loader */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: black;
-  color: #00ffcc;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-/* Navbar */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 15px;
-  background: #010409;
-  border-bottom: 1px solid #00ffcc;
-}
-
-nav a {
-  color: #00ffcc;
-  text-decoration: none;
-}
-
-/* Sections */
-section {
-  padding: 80px;
-  text-align: center;
-}
-
-/* Glow */
-h1, h2 {
-  color: #00ffcc;
-  text-shadow: 0 0 10px #00ffcc;
-}
-
-/* Projects */
-.project {
-  border: 1px solid #00ffcc;
-  padding: 20px;
-  margin: 20px auto;
-  width: 60%;
-  border-radius: 10px;
-}
-
-/* Terminal */
-#terminal {
-  border: 1px solid #00ffcc;
-  padding: 20px;
-  height: 200px;
-  overflow-y: auto;
-  margin: 20px;
-}
-
-#input {
-  width: 90%;
-  padding: 10px;
-  background: black;
-  color: #00ffcc;
-  border: 1px solid #00ffcc;
-}
-
-/* Matrix */
-#matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -95,9 +12,6 @@ h1, h2 {
   <h1>Initializing System...</h1>
   <p>Accessing Secure Portfolio...</p>
 </div>
-
-<!-- Matrix -->
-<canvas id="matrix"></canvas>
 
 <!-- Navbar -->
 <nav>
@@ -150,6 +64,66 @@ h1, h2 {
 
 <input type="text" id="input" placeholder="Type command...">
 </section>
+
+<script>
+// Loader Fix
+window.onload = function() {
+  setTimeout(() => {
+    const loader = document.getElementById("loader");
+    if (loader) {
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 500);
+    }
+  }, 1500);
+};
+
+// Typing Effect
+const text = "Hi, I'm Your Name";
+let i = 0;
+
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 80);
+  }
+}
+typeEffect();
+
+// Terminal
+const input = document.getElementById("input");
+const terminal = document.getElementById("terminal");
+
+input.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    const command = input.value.toLowerCase();
+    const newLine = document.createElement("p");
+
+    if (command === "help") {
+      newLine.textContent = "> help, about, projects, skills, contact";
+    } 
+    else if (command === "about") {
+      newLine.textContent = "> BTech student focused on cybersecurity.";
+    } 
+    else if (command === "projects") {
+      newLine.textContent = "> Scroll up to view projects section.";
+    } 
+    else if (command === "skills") {
+      newLine.textContent = "> Linux, Networking, Python, Security Tools";
+    } 
+    else if (command === "contact") {
+      newLine.textContent = "> Email: your@email.com";
+    } 
+    else {
+      newLine.textContent = "> Command not found";
+    }
+
+    terminal.appendChild(newLine);
+    terminal.scrollTop = terminal.scrollHeight;
+    input.value = "";
+  }
+});
+</script>
 
 </body>
 </html>
