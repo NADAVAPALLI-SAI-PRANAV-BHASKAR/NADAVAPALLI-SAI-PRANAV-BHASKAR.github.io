@@ -106,14 +106,6 @@ h1 {
   font-family: monospace;
 }
 
-/* ===== MATRIX BACKGROUND ===== */
-#matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
 /* ===== LINKS ===== */
 a {
   color: #00ffcc;
