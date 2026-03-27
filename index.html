@@ -11,6 +11,33 @@
 </div>
 
 <input type="text" id="input" placeholder="Type a command..." autofocus>
+  <script>
+const input = document.getElementById("input");
+const terminal = document.getElementById("terminal");
+
+input.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    const command = input.value;
+    const newLine = document.createElement("p");
+
+    if (command === "help") {
+      newLine.textContent = "> Commands: help, about, projects";
+    } 
+    else if (command === "about") {
+      newLine.textContent = "> I am a BTech student interested in cybersecurity.";
+    } 
+    else if (command === "projects") {
+      newLine.innerHTML = "> <a href='projects.html'>View my projects</a>";
+    } 
+    else {
+      newLine.textContent = "> Command not found";
+    }
+
+    terminal.appendChild(newLine);
+    input.value = "";
+  }
+});
+</script>
 <nav>
 <a href="index.html">Home</a>
 <a href="projects.html">Projects</a>
