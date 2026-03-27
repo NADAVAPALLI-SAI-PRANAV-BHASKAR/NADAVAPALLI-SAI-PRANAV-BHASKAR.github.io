@@ -1,17 +1,176 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Pranav's Portfolio</title>
-<link rel="stylesheet" href="style.css">
+<title>Cybersecurity Portfolio</title>
+
+<style>
+body {
+  margin: 0;
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: monospace;
+}
+
+/* Loader */
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: #00ffcc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background: #010409;
+  border-bottom: 1px solid #00ffcc;
+}
+
+nav a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+/* Sections */
+section {
+  padding: 80px;
+  text-align: center;
+}
+
+/* Glow */
+h1, h2 {
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+/* Projects */
+.project {
+  border: 1px solid #00ffcc;
+  padding: 20px;
+  margin: 20px auto;
+  width: 60%;
+  border-radius: 10px;
+}
+
+/* Terminal */
+#terminal {
+  border: 1px solid #00ffcc;
+  padding: 20px;
+  height: 200px;
+  overflow-y: auto;
+  margin: 20px;
+}
+
+#input {
+  width: 90%;
+  padding: 10px;
+  background: black;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+}
+
+/* Matrix */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+</style>
 </head>
 
-<body><div id="terminal">
-  <p>> Welcome to my cybersecurity portfolio</p>
-  <p>> Type 'help' to see commands</p>
+<body>
+
+<!-- Loader -->
+<div id="loader">
+  <h1>Initializing System...</h1>
+  <p>Accessing Secure Portfolio...</p>
 </div>
 
-<input type="text" id="input" placeholder="Type a command..." autofocus>
-  <script>
+<!-- Matrix -->
+<canvas id="matrix"></canvas>
+
+<!-- Navbar -->
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+</nav>
+
+<!-- Home -->
+<section id="home">
+<h1 id="typing"></h1>
+<p>Cybersecurity Enthusiast | BTech Student</p>
+</section>
+
+<!-- About -->
+<section id="about">
+<h2>About Me</h2>
+<p>I am a BTech student passionate about cybersecurity and ethical hacking.</p>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+<h2>Projects</h2>
+
+<div class="project">
+<h3>Network Scanning</h3>
+<p>Used Nmap to scan network and identify open ports.</p>
+</div>
+
+<div class="project">
+<h3>Packet Analysis</h3>
+<p>Analyzed packets using Wireshark.</p>
+</div>
+
+<div class="project">
+<h3>TryHackMe Labs</h3>
+<p>Completed beginner cybersecurity challenges.</p>
+</div>
+
+</section>
+
+<!-- Terminal -->
+<section>
+<h2>Terminal</h2>
+
+<div id="terminal">
+<p>> Welcome to my portfolio</p>
+<p>> Type 'help'</p>
+</div>
+
+<input type="text" id="input" placeholder="Type command...">
+</section>
+
+<script>
+// Loader
+setTimeout(() => {
+  document.getElementById("loader").style.display = "none";
+}, 2000);
+
+// Typing Effect
+const text = "Hi, I'm Your Name";
+let i = 0;
+
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 100);
+  }
+}
+typeEffect();
+
+// Terminal
 const input = document.getElementById("input");
 const terminal = document.getElementById("terminal");
 
@@ -21,15 +180,16 @@ input.addEventListener("keydown", function(e) {
     const newLine = document.createElement("p");
 
     if (command === "help") {
-      newLine.textContent = "> Commands: help, about, projects";
-    } 
-    else if (command === "about") {
-      newLine.textContent = "> I am a BTech student interested in cybersecurity.";
-    } 
-    else if (command === "projects") {
-      newLine.innerHTML = "> <a href='projects.html'>View my projects</a>";
-    } 
-    else {
+      newLine.textContent = "> help, about, projects, skills, contact";
+    } else if (command === "about") {
+      newLine.textContent = "> BTech student into cybersecurity.";
+    } else if (command === "projects") {
+      newLine.textContent = "> Scroll up to view projects.";
+    } else if (command === "skills") {
+      newLine.textContent = "> Linux, Networking, Python";
+    } else if (command === "contact") {
+      newLine.textContent = "> Email: your@email.com";
+    } else {
       newLine.textContent = "> Command not found";
     }
 
@@ -37,39 +197,41 @@ input.addEventListener("keydown", function(e) {
     input.value = "";
   }
 });
+
+// Matrix Effect
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+for (let x = 0; x < columns; x++) drops[x] = 1;
+
+function draw() {
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#00ffcc";
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.95)
+      drops[i] = 0;
+
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 33);
 </script>
-<nav>
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-</nav>
-<h1>Greetings, I'm Nadavapalli Sai Pranav Bhaskar</h1>
-<p>BTech Student | Cybersecurity Enthusiast</p>
-
-<h2>About Me</h2>
-<p>I am a BTech student interested in cybersecurity, ethical hacking, and network security.</p>
-
-<h2>Skills</h2>
-<ul>
-<li>Linux</li>
-<li>Networking</li>
-<li>Python</li>
-<li>Cybersecurity Tools</li>
-</ul>
-
-<h2>Projects</h2>
-<a href="projects.html">View My Projects</a>
-<h3>Network Scanning</h3>
-<p>I used Nmap to scan my local network and identify open ports and services.</p>
-
-<h3>Packet Analysis</h3>
-<p>I captured network packets and analyzed them using Wireshark.</p>
-
-<h3>Security Labs</h3>
-<p>I completed beginner cybersecurity labs on TryHackMe.</p>
-
-<h2>Contact</h2>
-<p>Email: pranav95515@gmail.com</p>
-<p>GitHub: https://github.com/NADAVAPALLI-SAI-PRANAV-BHASKAR</p>
 
 </body>
 </html>
