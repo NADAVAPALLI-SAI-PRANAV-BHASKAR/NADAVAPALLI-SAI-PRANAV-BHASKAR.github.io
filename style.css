@@ -1,4 +1,4 @@
-/* ===== GLOBAL ===== */
+/* GLOBAL */
 body {
   margin: 0;
   background: #0d1117;
@@ -7,7 +7,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* ===== LOADER ===== */
+/* LOADER */
 #loader {
   position: fixed;
   width: 100%;
@@ -19,10 +19,10 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 999;
-  text-align: center;
+  transition: opacity 0.5s ease;
 }
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 nav {
   display: flex;
   justify-content: center;
@@ -32,14 +32,11 @@ nav {
   border-bottom: 1px solid #00ffcc;
   position: sticky;
   top: 0;
-  z-index: 100;
 }
 
 nav a {
   color: #00ffcc;
   text-decoration: none;
-  font-size: 16px;
-  transition: 0.3s;
 }
 
 nav a:hover {
@@ -47,13 +44,13 @@ nav a:hover {
   text-shadow: 0 0 5px #00ffcc;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 section {
   padding: 80px 20px;
   text-align: center;
 }
 
-/* ===== HEADINGS ===== */
+/* HEADINGS */
 h1, h2 {
   color: #00ffcc;
   text-shadow: 0 0 10px #00ffcc;
@@ -63,7 +60,7 @@ h1 {
   font-size: 42px;
 }
 
-/* ===== PROJECT CARDS ===== */
+/* PROJECT CARDS */
 .project {
   border: 1px solid #00ffcc;
   padding: 20px;
@@ -71,7 +68,7 @@ h1 {
   width: 60%;
   border-radius: 12px;
   transition: all 0.3s ease;
-  background: rgba(0, 255, 204, 0.02);
+  background: rgba(0,255,204,0.02);
 }
 
 .project:hover {
@@ -79,7 +76,7 @@ h1 {
   transform: translateY(-5px);
 }
 
-/* ===== TERMINAL ===== */
+/* TERMINAL */
 #terminal {
   border: 1px solid #00ffcc;
   padding: 20px;
@@ -87,31 +84,19 @@ h1 {
   overflow-y: auto;
   margin: 20px auto;
   width: 80%;
-  background: rgba(0,0,0,0.6);
   text-align: left;
+  background: rgba(0,0,0,0.6);
 }
 
-#terminal p {
-  margin: 5px 0;
-}
-
-/* ===== INPUT FIELD ===== */
 #input {
   width: 80%;
   padding: 12px;
   background: black;
   color: #00ffcc;
   border: 1px solid #00ffcc;
-  outline: none;
-  font-family: monospace;
 }
 
-/* ===== LINKS ===== */
-a {
-  color: #00ffcc;
-}
-
-/* ===== SCROLLBAR (COOL DETAIL 😎) ===== */
+/* SCROLLBAR */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -120,9 +105,8 @@ a {
   background: #00ffcc;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+/* MOBILE */
 @media (max-width: 768px) {
-
   nav {
     flex-direction: column;
     gap: 10px;
@@ -136,16 +120,7 @@ a {
     width: 90%;
   }
 
-  #terminal {
+  #terminal, #input {
     width: 95%;
-    height: 180px;
-  }
-
-  #input {
-    width: 95%;
-  }
-
-  section {
-    padding: 50px 15px;
   }
 }
