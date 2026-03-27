@@ -1,29 +1,159 @@
+/* ===== GLOBAL ===== */
 body {
-  background-color: black;
-  color: #00ff00;
-  font-family: monospace;
-  padding: 40px;
+  margin: 0;
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: 'Courier New', monospace;
+  scroll-behavior: smooth;
 }
 
-h1, h2 {
-  color: #00ff00;
-}
-
-a {
-  color: #00ff00;
-}
-#terminal {
-  border: 1px solid #00ff00;
-  padding: 20px;
-  height: 300px;
-  overflow-y: auto;
-  margin-bottom: 10px;
-}
-
-#input {
+/* ===== LOADER ===== */
+#loader {
+  position: fixed;
   width: 100%;
-  padding: 10px;
+  height: 100%;
   background: black;
-  color: #00ff00;
-  border: 1px solid #00ff00;
+  color: #00ffcc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  text-align: center;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 15px;
+  background: #010409;
+  border-bottom: 1px solid #00ffcc;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: #00ffcc;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00ff88;
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+/* ===== HEADINGS ===== */
+h1, h2 {
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+/* ===== PROJECT CARDS ===== */
+.project {
+  border: 1px solid #00ffcc;
+  padding: 20px;
+  margin: 20px auto;
+  width: 60%;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: rgba(0, 255, 204, 0.02);
+}
+
+.project:hover {
+  box-shadow: 0 0 20px #00ffcc;
+  transform: translateY(-5px);
+}
+
+/* ===== TERMINAL ===== */
+#terminal {
+  border: 1px solid #00ffcc;
+  padding: 20px;
+  height: 220px;
+  overflow-y: auto;
+  margin: 20px auto;
+  width: 80%;
+  background: rgba(0,0,0,0.6);
+  text-align: left;
+}
+
+#terminal p {
+  margin: 5px 0;
+}
+
+/* ===== INPUT FIELD ===== */
+#input {
+  width: 80%;
+  padding: 12px;
+  background: black;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  outline: none;
+  font-family: monospace;
+}
+
+/* ===== MATRIX BACKGROUND ===== */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #00ffcc;
+}
+
+/* ===== SCROLLBAR (COOL DETAIL 😎) ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ffcc;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .project {
+    width: 90%;
+  }
+
+  #terminal {
+    width: 95%;
+    height: 180px;
+  }
+
+  #input {
+    width: 95%;
+  }
+
+  section {
+    padding: 50px 15px;
+  }
 }
