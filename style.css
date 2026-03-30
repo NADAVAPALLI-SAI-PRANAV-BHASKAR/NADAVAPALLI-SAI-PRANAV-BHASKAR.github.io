@@ -1,4 +1,4 @@
-/* GLOBAL */
+/* ===== GLOBAL ===== */
 body {
   margin: 0;
   background: #0d1117;
@@ -7,7 +7,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* LOADER */
+/* ===== LOADER ===== */
 #loader {
   position: fixed;
   width: 100%;
@@ -19,10 +19,11 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 999;
+  text-align: center;
   transition: opacity 0.5s ease;
 }
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 nav {
   display: flex;
   justify-content: center;
@@ -32,11 +33,14 @@ nav {
   border-bottom: 1px solid #00ffcc;
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 
 nav a {
   color: #00ffcc;
   text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
 nav a:hover {
@@ -44,13 +48,21 @@ nav a:hover {
   text-shadow: 0 0 5px #00ffcc;
 }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 section {
   padding: 80px 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
-/* HEADINGS */
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HEADINGS ===== */
 h1, h2 {
   color: #00ffcc;
   text-shadow: 0 0 10px #00ffcc;
@@ -60,7 +72,7 @@ h1 {
   font-size: 42px;
 }
 
-/* PROJECT CARDS */
+/* ===== PROJECT CARDS ===== */
 .project {
   border: 1px solid #00ffcc;
   padding: 20px;
@@ -68,7 +80,7 @@ h1 {
   width: 60%;
   border-radius: 12px;
   transition: all 0.3s ease;
-  background: rgba(0,255,204,0.02);
+  background: rgba(0, 255, 204, 0.02);
 }
 
 .project:hover {
@@ -76,7 +88,7 @@ h1 {
   transform: translateY(-5px);
 }
 
-/* TERMINAL */
+/* ===== TERMINAL ===== */
 #terminal {
   border: 1px solid #00ffcc;
   padding: 20px;
@@ -84,19 +96,69 @@ h1 {
   overflow-y: auto;
   margin: 20px auto;
   width: 80%;
-  text-align: left;
   background: rgba(0,0,0,0.6);
+  text-align: left;
 }
 
+#terminal p {
+  margin: 5px 0;
+}
+
+/* ===== INPUT FIELD ===== */
 #input {
   width: 80%;
   padding: 12px;
   background: black;
   color: #00ffcc;
   border: 1px solid #00ffcc;
+  outline: none;
+  font-family: monospace;
 }
 
-/* SCROLLBAR */
+/* ===== CONTACT FORM ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input, textarea {
+  width: 60%;
+  padding: 10px;
+  background: black;
+  color: #00ffcc;
+  border: 1px solid #00ffcc;
+  margin-bottom: 10px;
+  font-family: monospace;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  padding: 10px 20px;
+  background: #00ffcc;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #00cc99;
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #00ffcc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -105,8 +167,9 @@ h1 {
   background: #00ffcc;
 }
 
-/* MOBILE */
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
+
   nav {
     flex-direction: column;
     gap: 10px;
@@ -120,7 +183,20 @@ h1 {
     width: 90%;
   }
 
-  #terminal, #input {
+  #terminal {
     width: 95%;
+    height: 180px;
+  }
+
+  #input {
+    width: 95%;
+  }
+
+  input, textarea {
+    width: 90%;
+  }
+
+  section {
+    padding: 50px 15px;
   }
 }
