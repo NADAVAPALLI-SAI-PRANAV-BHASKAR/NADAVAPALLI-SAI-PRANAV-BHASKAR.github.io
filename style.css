@@ -48,12 +48,12 @@ nav a:hover {
   text-shadow: 0 0 5px #00ffcc;
 }
 
-/* ===== SECTIONS ===== */
+/* ===== SECTIONS (ANIMATION) ===== */
 section {
   padding: 80px 20px;
   text-align: center;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(60px);
   transition: all 0.8s ease;
 }
 
@@ -80,12 +80,12 @@ h1 {
   width: 60%;
   border-radius: 12px;
   transition: all 0.3s ease;
-  background: rgba(0, 255, 204, 0.02);
+  background: rgba(0, 255, 204, 0.03);
 }
 
 .project:hover {
   box-shadow: 0 0 20px #00ffcc;
-  transform: translateY(-5px);
+  transform: translateY(-6px) scale(1.01);
 }
 
 /* ===== TERMINAL ===== */
@@ -98,6 +98,7 @@ h1 {
   width: 80%;
   background: rgba(0,0,0,0.6);
   text-align: left;
+  border-radius: 10px;
 }
 
 #terminal p {
@@ -113,6 +114,7 @@ h1 {
   border: 1px solid #00ffcc;
   outline: none;
   font-family: monospace;
+  border-radius: 5px;
 }
 
 /* ===== CONTACT FORM ===== */
@@ -124,28 +126,38 @@ form {
 
 input, textarea {
   width: 60%;
-  padding: 10px;
+  padding: 12px;
   background: black;
   color: #00ffcc;
   border: 1px solid #00ffcc;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-family: monospace;
+  transition: 0.3s;
+  border-radius: 6px;
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 10px #00ffcc;
 }
 
 textarea {
   resize: none;
 }
 
+/* ===== BUTTON ===== */
 button {
   padding: 10px 20px;
   background: #00ffcc;
   border: none;
   cursor: pointer;
   font-weight: bold;
+  transition: 0.3s;
+  border-radius: 5px;
 }
 
 button:hover {
   background: #00cc99;
+  transform: scale(1.05);
 }
 
 /* ===== LINKS ===== */
@@ -165,6 +177,7 @@ a:hover {
 
 ::-webkit-scrollbar-thumb {
   background: #00ffcc;
+  border-radius: 10px;
 }
 
 /* ===== MOBILE RESPONSIVE ===== */
