@@ -3,6 +3,13 @@
 <head>
 <title>Cybersecurity Portfolio</title>
 <link rel="stylesheet" href="style.css">
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+</style>
+
 </head>
 
 <body>
@@ -17,19 +24,31 @@
 <nav>
 <a href="#home">Home</a>
 <a href="#about">About</a>
+<a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
 </nav>
 
 <!-- Home -->
 <section id="home">
 <h1 id="typing"></h1>
-<p>Cybersecurity Enthusiast | BTech Student</p>
+<p>Aspiring Cybersecurity Engineer | BTech Student</p>
 </section>
 
 <!-- About -->
 <section id="about">
 <h2>About Me</h2>
-<p>I am a BTech student passionate about cybersecurity and ethical hacking.</p>
+<p>
+I am a BTech student with a strong interest in cybersecurity,
+networking, and ethical hacking. I am building hands-on experience
+using tools like Nmap and Wireshark.
+</p>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+<h2>Skills</h2>
+<p>Linux | Networking | Python | Nmap | Wireshark</p>
 </section>
 
 <!-- Projects -->
@@ -38,21 +57,26 @@
 
 <div class="project">
 <h3>Network Scanning</h3>
-<p>Used Nmap to scan network and identify open ports.</p>
+<p>Scanned local network to identify open ports and services.</p>
+<p><strong>Tools:</strong> Nmap, Linux</p>
 </div>
 
 <div class="project">
 <h3>Packet Analysis</h3>
-<p>Analyzed packets using Wireshark.</p>
+<p>Captured and analyzed packets to understand network behavior.</p>
+<p><strong>Tools:</strong> Wireshark</p>
 </div>
 
 <div class="project">
 <h3>TryHackMe Labs</h3>
-<p>Completed beginner cybersecurity challenges.</p>
+<p>Completed beginner cybersecurity labs including Linux and networking.</p>
+<p><strong>Platform:</strong> TryHackMe</p>
 </div>
 
+<a href="projects.html">View Detailed Projects →</a>
+
 </section>
-<a href="projects.html">View Detailed Projects</a>
+
 <!-- Terminal -->
 <section>
 <h2>Terminal</h2>
@@ -63,6 +87,14 @@
 </div>
 
 <input type="text" id="input" placeholder="Type command...">
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: your@email.com</p>
+<p>GitHub: your github link</p>
+<p>LinkedIn: your linkedin link</p>
 </section>
 
 <script>
@@ -100,16 +132,16 @@ input.addEventListener("keydown", function(e) {
     const newLine = document.createElement("p");
 
     if (command === "help") {
-      newLine.textContent = "> help, about, projects, skills, contact";
+      newLine.textContent = "> help, about, skills, projects, contact";
     } 
     else if (command === "about") {
-      newLine.textContent = "> BTech student focused on cybersecurity.";
-    } 
-    else if (command === "projects") {
-      newLine.textContent = "> Scroll up to view projects section.";
+      newLine.textContent = "> Aspiring cybersecurity engineer.";
     } 
     else if (command === "skills") {
       newLine.textContent = "> Linux, Networking, Python, Security Tools";
+    } 
+    else if (command === "projects") {
+      newLine.textContent = "> Scroll up to view projects.";
     } 
     else if (command === "contact") {
       newLine.textContent = "> Email: your@email.com";
@@ -122,6 +154,18 @@ input.addEventListener("keydown", function(e) {
     terminal.scrollTop = terminal.scrollHeight;
     input.value = "";
   }
+});
+
+// Scroll Animation
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      section.classList.add("show");
+    }
+  });
 });
 </script>
 
